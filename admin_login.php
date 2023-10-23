@@ -1,93 +1,116 @@
-<?php
-// Start session
-session_start();
-
-// Check if form has been submitted
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get form data
-    $userid = $_POST['userid'];
-    $password = $_POST['password'];
-   
-    // Check if user ID and password are correct
-    if ($userid == 'abc' && $password == '123') {
-        // Set session variables for user ID and password
-        $_SESSION['user_id'] = $userid;
-
-        // Redirect to donor login page with user ID
-        header('Location: donor_dashboard.php');
-        exit();
-    } else {
-        // Display error message
-        $error = 'Invalid user ID or password';
-    }
-}
-?>
-<!DOCTYPE html>
-<html>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Payment Platform</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <title>Admin Login</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        /* Style the login form */
+        .login-form {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style the form fields */
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* Style the login button */
+        .login-form button {
+            background-color: #0074D9;
+            color: #fff;
+            padding: 14px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Add a hover effect to the login button */
+        .login-form button:hover {
+            background-color:  #0074E8;
+        }
+
+        /* Add a cancel button */
+        .login-form .cancel-button {
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Add a hover effect to the cancel button */
+        .login-form .cancel-button:hover {
+            background-color: #333;
+        }
+
+        /* Style the form labels */
+        .login-form label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* Style the form title */
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Style the error message */
+        .login-form .error-message {
+            color: #f00;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">My Website</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <div class="login-form">
+        <h2>Admin Login</h2>
+        <?php
+        // Check if the form was submitted
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Get the form data
+            $username = $_POST['username'];
+            $password = $_POST['password'];
 
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="text-center">Login</h3>
-                    </div>
-                    <div class="card-body">
-                        <?php if (isset($error)): ?>
-                            <div class="alert alert-danger"><?php echo $error; ?></div>
-                        <?php endif; ?>
-                        <form method="post">
-                            <div class="form-group">
-                                <label for="userid">User ID:</label>
-                                <input type="text" name="userid" id="userid" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password:</label>
-                                <input type="password" name="password" id="password" class="form-control" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block">Login</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+            // Check if the username and password are correct
+            if ($username == 'hewwo' && $password == 'hehe') {
+                // Redirect the user to the admin_page.php page
+                header('Location: admin_page.php');
+                exit;
+            } else {
+                // Set an error message
+                $error_message = 'Invalid username or password.';
+            }
+        }
+        ?>
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+            <button type="button" class="cancel-button" onclick="window.location.href='home.php'">Cancel</button>
+
+            <?php if (isset($error_message)) { ?>
+                <div class="error-message"><?php echo $error_message; ?></div>
+            <?php } ?>
+        </form>
     </div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper-base.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 </html>

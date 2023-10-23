@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
    
     // Check if user ID and password are correct
-    if ($userid == 'abc' && $password == '123') {
+    if ($userid == 'abcd' && $password == '1234') {
         // Set session variables for user ID and password
         $_SESSION['user_id'] = $userid;
 

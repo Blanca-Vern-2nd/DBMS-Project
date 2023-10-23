@@ -1037,7 +1037,7 @@ section:nth-child(even){
             <a href="#about"> <i class="fas fa-chevron-right"></i> about </a>
             <a href="#services"> <i class="fas fa-chevron-right"></i> services </a>
             <a href="#doctors"> <i class="fas fa-chevron-right"></i> teachers </a>
-            <a href="#appointment"> <i class="fas fa-chevron-right"></i> enrollment </a>
+            <a href="admin_login.php"> <i class="fas fa-chevron-right"></i> Admin login </a>
             <a href="#review"> <i class="fas fa-chevron-right"></i> review </a>
             <a href="#blogs"> <i class="fas fa-chevron-right"></i> blogs </a>
         </div>
