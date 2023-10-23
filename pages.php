@@ -75,11 +75,11 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card">
-                    <img src="https://via.placeholder.com/500x200.png?text=Admin" alt="Admin Login">
+                    <img src="https://via.placeholder.com/500x200.png?text=Donor" alt="Donor Login">
                     <div class="card-body">
-                        <h5 class="card-title">Admin Login</h5>
-                        <p class="card-text">Login as an administrator</p>
-                        <a href="admin_login.php" class="btn btn-primary">Admin Login</a>
+                        <h5 class="card-title">Donor Login</h5>
+                        <p class="card-text">Login as an Donor</p>
+                        <a href="donor_login.php" class="btn btn-primary">Donor Login</a>
                     </div>
                 </div>
             </div>

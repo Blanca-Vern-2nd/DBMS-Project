@@ -66,7 +66,7 @@ $receipts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
     <div class="navbar">
-        <a href="admin_dashboard.php">Home</a>
+        <a href="donor_dashboard.php">Home</a>
         <a href="donate.php">Donate</a>
         <a href="give_my_receipt.php">Request Receipt</a>
         <a class="active" href="show_my_receipts.php">Show Receipts</a>
