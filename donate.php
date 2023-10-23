@@ -43,15 +43,14 @@ session_start();?>
                         Payment Information
                     </div>
                     <div class="card-body text-center">
-                    <?php
-    print_r($_SESSION);
-    ?>
+       
                         <form method="post" action="process-payment.php" onsubmit="return validateForm()">
                             <div class="form-group">
                                 <label for="name">Name on Card</label>
                                 <input type="text" class="form-control" id="name" name="name" required>
                             </div>
                             <div class="form-group">
+                                
                                 <label for="card_number">Card Number</label>
                                 <input type="text" class="form-control" id="card_number" name="card_number" required>
                             </div>

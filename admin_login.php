@@ -54,8 +54,8 @@ if (!isset($_SESSION['user_id'])) {
     <div class="navbar">
         <a class="active" href="#">Home</a>
         <a href="donate.php">Donate</a>
-        <a href="#">Request</a>
-        <a href="#">View Courses</a>
+        <a href="give_my_receipt.php">Request Receipt</a>
+        <a href="show_my_receipts.php">Show receipt numbers</a>
         <a href="#" style="float:right">Logout</a>
     </div>
     
