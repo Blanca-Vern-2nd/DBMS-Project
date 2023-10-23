@@ -1,4 +1,5 @@
 <?php
+require_once('tcpdf/tcpdf.php');
 // Start session
 session_start();
 
@@ -8,9 +9,9 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit();
 }
-?>
-<?php
-require_once('tcpdf/tcpdf.php');
+
+// Get user ID from session variable
+$user_id = $_SESSION['user_id'];
 
 // Get form data
 $name = $_GET['name'];
@@ -22,60 +23,52 @@ $logo_url = 'https://example.com/logo.png';
 
 // Generate unique receipt number
 $receipt_number = time() . '-' . mt_rand(1000, 9999);
-$user_id = $_SESSION['user_id'];
 
-// Create new PDF document
+// Check if receipt has already been downloaded
+if (receiptDownloaded($receipt_number)) {
+    // Redirect to homepage
+    header('Location: index.php');
+    exit();
+}
+
+// Generate PDF receipt
 $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
-
-// Set document information
-$pdf->SetCreator($org_name);
+$pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor($org_name);
-$pdf->SetTitle('Payment Receipt');
-$pdf->SetSubject('Payment Receipt');
-$pdf->SetKeywords('Payment, Receipt');
-
-// Set default header data
-$pdf->SetHeaderData($logo_url, 30, $org_name . ' Payment Receipt', '');
-
-// Set header and footer fonts
-$pdf->setHeaderFont(Array('helvetica', '', 14));
-$pdf->setFooterFont(Array('helvetica', '', 8));
-
-// Set default monospaced font
-$pdf->SetDefaultMonospacedFont('courier');
-
-// Set margins
-$pdf->SetMargins(15, 15, 15);
-
-// Set auto page breaks
-$pdf->SetAutoPageBreak(TRUE, 15);
-
-// Set image scale factor
-$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-
-// Set font
-$pdf->SetFont('helvetica', '', 12);
-
-// Add page
+$pdf->SetTitle('Receipt');
+$pdf->SetSubject('Receipt');
+$pdf->SetKeywords('Receipt, PDF');
+$pdf->setPrintHeader(false);
+$pdf->setPrintFooter(false);
 $pdf->AddPage();
-
-// Output logo
-$pdf->Image($logo_url, 15, 15, 30, 30, 'PNG');
-
-// Output text
-$pdf->Write(0, $org_name . " Payment Receipt\n\n");
-$pdf->SetFont('helvetica', 'B', 14);
-$pdf->Write(0, "Receipt Number: ");
+$pdf->Image($logo_url, 10, 10, 30, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 $pdf->SetFont('helvetica', '', 12);
-$pdf->Write(0, $receipt_number . "\n\n");
-$pdf->SetFont('helvetica', 'B', 12);
-$pdf->Write(0, "Customer Details:\n\n");
+$pdf->Cell(0, 10, $org_name, 0, 1, 'R');
+$pdf->SetFont('helvetica', 'B', 16);
+$pdf->Cell(0, 20, 'Receipt', 0, 1, 'C');
 $pdf->SetFont('helvetica', '', 12);
-$pdf->Write(0, "UserID: $user_id\n");
-$pdf->Write(0, "Name: $name\n");
-$pdf->Write(0, "Amount: $amount\n");
+$pdf->Cell(0, 10, 'Name: ' . $name, 0, 1);
+$pdf->Cell(0, 10, 'Amount: ' . $amount, 0, 1);
+$pdf->Cell(0, 10, 'Receipt Number: ' . $receipt_number, 0, 1);
 
-// Output PDF as attachment
-ob_clean();
-$pdf->Output('payment_receipt.pdf', 'D');
-?>
+// Get PDF file contents
+$pdf_file = $pdf->Output('', 'S');
+
+// Save receipt number, user ID, and amount in database
+$pdo = new PDO('mysql:host=localhost;dbname=dbms2023', 'root', '');
+$stmt = $pdo->prepare('INSERT INTO receipts (user_id, receipt_number, receipt_file, amount) VALUES (?, ?, ?, ?)');
+$stmt->execute([$user_id, $receipt_number, $pdf_file, $amount]);
+// Display receipt number to user
+echo 'Your receipt number is: ' . $receipt_number;
+
+// Add "Return Home" button
+echo '<br><br><a href="admin_login.php">Return Home</a>';
+
+// Function to check if receipt has already been downloaded
+function receiptDownloaded($receipt_number) {
+    $pdo = new PDO('mysql:host=localhost;dbname=dbms2023', 'root', '');
+    $stmt = $pdo->prepare('SELECT COUNT(*) FROM receipts WHERE receipt_number = ?');
+    $stmt->execute([$receipt_number]);
+    $count = $stmt->fetchColumn();
+    return $count > 0;
+}
