@@ -34,7 +34,7 @@ if (!isset($_SESSION['user_id'])) {
                 </li>
             </ul>
             <div class="ml-auto">
-                <a href="#" style="float:right">Logout</a>
+                <a href="home.php" style="float:right">Logout</a>
             </div>
         </div>
     </nav>

@@ -28,7 +28,7 @@ if (!isset($_SESSION['user_id'])) {
                         <a class="nav-link" href="#">Donate</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="home.php">Logout</a>
                     </li>
                 </ul>
             </div>

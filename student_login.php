@@ -13,8 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Set session variables for user ID and password
         $_SESSION['user_id'] = $userid;
 
-        // Redirect to donor login page with user ID
-        header('Location: donor_dashboard.php');
+        // Redirect to student dashboard page with user ID
+        header('Location: student_dashboard.php');
         exit();
     } else {
         // Display error message
@@ -24,10 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 <!DOCTYPE html>
 <html>
-<!DOCTYPE html>
-<html>
 <head>
-    <title>Payment Platform</title>
+    <title>Student Login</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -62,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="text-center">Login</h3>
+                        <h3 class="text-center">Student Login</h3>
                     </div>
                     <div class="card-body">
                         <?php if (isset($error)): ?>
