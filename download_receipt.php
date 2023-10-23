@@ -62,7 +62,7 @@ $stmt->execute([$user_id, $receipt_number, $pdf_file, $amount]);
 echo 'Your receipt number is: ' . $receipt_number;
 
 // Add "Return Home" button
-echo '<br><br><a href="admin_login.php">Return Home</a>';
+echo '<br><br><a href="admin_dashboard.php">Return Home</a>';
 
 // Function to check if receipt has already been downloaded
 function receiptDownloaded($receipt_number) {

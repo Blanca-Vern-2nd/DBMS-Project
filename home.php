@@ -627,7 +627,7 @@ section:nth-child(even){
         <a href="#about">about</a>
         <a href="#services">services</a>
         <a href="#doctors">teachers</a>
-        <a href="login_page.php">Login/Signup</a>
+        <a href="pages.php">Login/Signup</a>
         <!-- -------------- -->
        
         <!-- -------------- -->
@@ -652,7 +652,7 @@ section:nth-child(even){
     <div class="content">
         <h3>we take care of your education</h3>
         <p> A person who is educated is able to achieve his dreams. Education gives you the path to success</p>
-        <a href="login_page.php" class="btn"> Join us <span class="fas fa-chevron-right"></span> </a>
+        <a href="pages.php" class="btn"> Join us <span class="fas fa-chevron-right"></span> </a>
     </div>
 
 </section>

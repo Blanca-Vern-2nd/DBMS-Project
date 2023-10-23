@@ -84,7 +84,7 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
     <div class="navbar">
-        <a href="admin_login.php">Home</a>
+        <a href="admin_dashboard.php">Home</a>
         <a href="donate.php">Donate</a>
         <a class="active" href="give_my_receipt.php">Request Receipt</a>
         <a href="show_my_receipts.php">Show Receipts</a>

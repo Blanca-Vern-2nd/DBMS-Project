@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['user_id'] = $userid;
 
         // Redirect to admin login page with user ID
-        header('Location: admin_login.php');
+        header('Location: admin_dashboard.php');
         exit();
     } else {
         // Display error message
