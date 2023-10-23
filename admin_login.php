@@ -56,7 +56,7 @@ if (!isset($_SESSION['user_id'])) {
         <a href="donate.php">Donate</a>
         <a href="give_my_receipt.php">Request Receipt</a>
         <a href="show_my_receipts.php">Show receipt numbers</a>
-        <a href="#" style="float:right">Logout</a>
+        <a href="home.php" style="float:right">Logout</a>
     </div>
     
 </body>
