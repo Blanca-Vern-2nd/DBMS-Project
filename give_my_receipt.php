@@ -84,10 +84,12 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
     <div class="navbar">
-        <a href="donor_dashboard.php">Home</a>
-        <a href="donate.php">Donate</a>
-        <a class="active" href="give_my_receipt.php">Request Receipt</a>
-        <a href="show_my_receipts.php">Show Receipts</a>
+    <a href="donor_dashboard.php">Home</a>
+        <a href="donate.php">Financial Donation</a>
+        <a href="donate_books.php">Donate books</a>
+        <a class="active" href="#">Request Receipt</a>
+        <a href="show_my_receipts.php">Show receipt numbers</a>
+        <a href="show_my_books.php">Show Book donation status</a>
         <a href="home.php" style="float:right">Logout</a>
     </div>
 

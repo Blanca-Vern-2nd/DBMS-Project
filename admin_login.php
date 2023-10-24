@@ -89,7 +89,7 @@
             // Check if the username and password are correct
             if ($username == 'hewwo' && $password == 'hehe') {
                 // Redirect the user to the admin_page.php page
-                header('Location: admin_page.php');
+                header('Location: admin_work.php');
                 exit;
             } else {
                 // Set an error message

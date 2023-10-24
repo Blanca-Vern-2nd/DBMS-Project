@@ -87,49 +87,60 @@ $result = mysqli_query($conn, $sql);
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
+        .content {
+            text-align: center;
+        }
+
+        
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <a href="#" class="active">Pending Donations</a>
-        <a href="home.php" class="right">Logout</a>
+<div class="navbar">
+        <a href="admin_page.php" class="active">Pending Donations</a>
+        <a href="admin_deliv.php" >Book Delivery</a>
+        <a href="admin_new_req.php" >Student Approval Requests</a>
+        <a href="home.php" style="float: right;">Logout</a>
     </div>
 
     <div class="content">
-        <h2>Pending Book Donations</h2>
-        <?php if (mysqli_num_rows($result) > 0): ?>
-            <table>
+    <h1>Pending Book Donations</h1>
+    <?php if (mysqli_num_rows($result) > 0): ?>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>ISBN</th>
+                <th>Class</th>
+                <th>Subject</th>
+                <th>Condition</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+            <?php while ($row = mysqli_fetch_assoc($result)){ ?>
                 <tr>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>ISBN</th>
-                    <th>Condition</th>
-                    <th>Description</th>
-                    <th>Action</th>
+                    <td><?php echo $row['title']; ?></td>
+                    <td><?php echo $row['author']; ?></td>
+                    <td><?php echo $row['isbn']; ?></td>
+                    <td><?php echo $row['class']; ?></td>
+                    <td><?php echo $row['subject']; ?></td>
+                    <td><?php echo $row['condition']; ?></td>
+                    <td><?php echo $row['description']; ?></td>
+                    <td>
+                        <form method="post">
+                            <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                            <select name="status">
+                                <option value="approved">Approve</option>
+                                <option value="rejected">Reject</option>
+                            </select>
+                            <input type="submit" name="submit" value="Submit">
+                        </form>
+                    </td>
                 </tr>
-                <?php while ($row = mysqli_fetch_assoc($result)){ ?>
-                    <tr>
-                        <td><?php echo $row['title']; ?></td>
-                        <td><?php echo $row['author']; ?></td>
-                        <td><?php echo $row['isbn']; ?></td>
-                        <td><?php echo $row['condition']; ?></td>
-                        <td><?php echo $row['description']; ?></td>
-                        <td>
-                            <form method="post">
-                                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                                <select name="status">
-                                    <option value="approved">Approve</option>
-                                    <option value="rejected">Reject</option>
-                                </select>
-                                <input type="submit" name="submit" value="Submit">
-                            </form>
-                        </td>
-                    </tr>
-                <?php }?>
-            </table>
-        <?php else: ?>
-            <p>No pending book donations.</p>
-        <?php endif; ?>
-    </div>
+            <?php }?>
+        </table>
+    <?php else: ?>
+        <p>No pending book donations.</p>
+    <?php endif; ?>
+</div>
 </body>
 </html>

@@ -55,8 +55,8 @@ if (!isset($_SESSION['user_id'])) {
         <a class="active" href="#">Home</a>
         <a href="courses.php">Your Courses</a>
         <a href="inventory.php">Our Inventory</a>
-        <a href="request.php">Request Donation</a>
-        <a href="logout.php" style="float:right">Logout</a>
+        <a href="request_book.php">Request Donation</a>
+        <a href="home.php" style="float:right">Logout</a>
     </div>
     
 </body>

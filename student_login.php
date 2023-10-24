@@ -8,18 +8,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $userid = $_POST['userid'];
     $password = $_POST['password'];
    
-    // Check if user ID and password are correct
-    if ($userid == 'abcd' && $password == '1234') {
-        // Set session variables for user ID and password
-        $_SESSION['user_id'] = $userid;
-
-        // Redirect to student dashboard page with user ID
-        header('Location: student_dashboard.php');
-        exit();
-    } else {
-        // Display error message
-        $error = 'Invalid user ID or password';
+    // Connect to database
+    $conn = new mysqli('localhost', 'root', '', 'dbms2023');
+    if ($conn->connect_error) {
+        die('Connection failed: ' . $conn->connect_error);
     }
+
+    // Prepare SQL statement to select user ID and password from student table
+    $stmt = $conn->prepare('SELECT userid, password FROM student WHERE userid = ?');
+    $stmt->bind_param('s', $userid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Check if user ID and password are correct
+    if ($result->num_rows == 1) {
+        $row = $result->fetch_assoc();
+        if ($row['password'] == $password) {
+            // Set session variables for user ID and password
+            $_SESSION['user_id'] = $userid;
+
+            // Redirect to student dashboard page with user ID
+            header('Location: student_dashboard.php');
+            exit();
+        }
+    }
+
+    // Display error message
+    $error = 'Invalid user ID or password';
+
+    // Close database connection
+    $stmt->close();
+    $conn->close();
 }
 ?>
 <!DOCTYPE html>
@@ -89,3 +108,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 </html>
+?>
