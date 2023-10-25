@@ -133,9 +133,7 @@ function getFileExtension($filename) {
             margin-top: 3rem;
         }
 
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
+       
 
         p#verificationResult {
             font-weight: bold;

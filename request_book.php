@@ -127,6 +127,13 @@ $conn->close();
             text-align: center;
         }
 
+        /* Book card number of books */
+        .book-card p.num-books {
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
         /* Request button */
         .request-btn {
             background-color: #4CAF50;
@@ -162,8 +169,9 @@ $conn->close();
         <p class="isbn"><strong>ISBN:</strong> <?php echo $row['isbn']; ?></p>
         <p class="class"><strong>Class:</strong> <?php echo $row['class']; ?></p>
         <p class="subject"><strong>Subject:</strong> <?php echo $row['subject']; ?></p>
+        <p class="num-books"><strong>Number of Books:</strong> <?php echo $row['num_books']; ?></p>
         <form action="request_book_process.php" method="post">
-    <input type="hidden" name="book_id" value="<?php echo $row['id']; ?>">
+    <input type="hidden" name="book_id" value="<?php echo $row['isbn']; ?>">
     <button type="submit" class="request-btn">Request</button>
 </form>
     </div>

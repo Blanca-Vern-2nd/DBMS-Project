@@ -122,7 +122,7 @@
         <option value="like new">Like new</option>
         <option value="good">Good</option>
         <option value="fair">Fair</option>
-        <option value="poor">Poor</option>
+        <option value="poor">Average</option>
     </select>
 
     <label for="book-class">Class:</label>

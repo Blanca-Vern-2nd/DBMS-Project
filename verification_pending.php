@@ -16,10 +16,7 @@
             cursor: pointer;
         }
 
-        /* Add a hover effect to the button */
-        .return-button:hover {
-            background-color: #3e8e41;
-        }
+
     </style>
 </head>
 <body>
