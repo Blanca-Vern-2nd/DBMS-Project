@@ -5,5 +5,11 @@
             "Vendor\\Autoload\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+        "phpmailer/phpmailer": "^6.8",
+        "google/apiclient": "2.0",
+        "twilio/sdk": "^7.12",
+        "sendinblue/api-v3-sdk": "^7.4",
+        "mandrill/mandrill": "^1.0"
+    }
 }

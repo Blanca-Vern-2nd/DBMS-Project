@@ -72,38 +72,41 @@
     </div>
 </nav>
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="https://via.placeholder.com/500x200.png?text=Donor" alt="Donor Login">
-                    <div class="card-body">
-                        <h5 class="card-title">Donor Login</h5>
-                        <p class="card-text">Login as an Donor</p>
-                        <a href="donor_login.php" class="btn btn-primary">Donor Login</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="https://via.placeholder.com/500x200.png?text=Student" alt="Student Login">
-                    <div class="card-body">
-                        <h5 class="card-title">Student Login</h5>
-                        <p class="card-text">Login as a student</p>
-                        <a href="student_login.php" class="btn btn-primary">Student Login</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="https://via.placeholder.com/500x200.png?text=Parent" alt="Parent Login">
-                    <div class="card-body">
-                        <h5 class="card-title">Parent Login</h5>
-                        <p class="card-text">Login as a parent</p>
-                        <a href="parent_login.php" class="btn btn-primary">Parent Login</a>
-                    </div>
-                </div>
+    <div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <img src="https://via.placeholder.com/500x200.png?text=Donor" alt="Donor Login">
+            <div class="card-body">
+                <h5 class="card-title">Donor Login</h5>
+                <p class="card-text">Login as a donor</p>
+                <a href="donor_login.php" class="btn btn-primary">Donor Login</a>
+                <a href="donor_signup.php" class="btn btn-primary">Donor Signup</a>
             </div>
         </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <img src="https://via.placeholder.com/500x200.png?text=Student" alt="Student Login">
+            <div class="card-body">
+                <h5 class="card-title">Student Login</h5>
+                <p class="card-text">Login as a student</p>
+                <a href="student_login.php" class="btn btn-primary">Student Login</a>
+                <a href="student_signup.php" class="btn btn-primary">Student Signup</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <img src="https://via.placeholder.com/500x200.png?text=Parent" alt="Parent Login">
+            <div class="card-body">
+                <h5 class="card-title">Parent Login</h5>
+                <p class="card-text">Login as a parent</p>
+                <a href="parent_login.php" class="btn btn-primary">Parent Login</a>
+                <a href="parent_signup.php" class="btn btn-primary">Parent Signup</a>
+            </div>
+        </div>
+    </div>
+</div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
 </body>
